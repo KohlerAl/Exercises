@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'OctoberCrow';
-    src: url("FONTS/OctoberCrow.ttf") format('truetype');
+    src: url(Fonts/OctoberCrow.ttf) format('truetype');
 }
 
 body {
