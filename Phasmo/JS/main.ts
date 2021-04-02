@@ -1,14 +1,17 @@
 namespace Phasmophobia {
-    window.addEventListener("load", handleLoad);
-
+    //Declaring an array with all ghosts
     export let allGhosts: Spooky[] = [];
 
+    //Global Variables
     let placeholder: HTMLHeadingElement;
     let lastTarget: string;
     let exclude: HTMLDivElement;
     let include: HTMLDivElement;
 
+    window.addEventListener("load", handleLoad);
+
     async function handleLoad(): Promise<void> {
+        //Fetching the json-file and create the ghosts with the data in it
         let answer: Response = await fetch("JSON/ghosts.json");
         let response: string = await answer.text();
         let ghosty: Data = JSON.parse(response);
@@ -17,11 +20,11 @@ namespace Phasmophobia {
         exclude = <HTMLDivElement>document.querySelector("#exclude");
         include = <HTMLDivElement>document.querySelector("#include");
 
+        //installing a change-listener on the checkboxes
         include.addEventListener("change", changeStatus);
         exclude.addEventListener("change", changeStatus);
 
         generateContent(ghosty);
-        
         insertBreaks(); 
     }
 

@@ -3,6 +3,7 @@ var Phasmophobia;
 (function (Phasmophobia) {
     class Spooky {
         constructor(_name, _evidenceOne, _evidenceTwo, _evidenceThree, _all, _strength, _weakness, _power) {
+            //Creating a new instance of the class and giving it the properties written in the json 
             this.name = _name;
             this.evidenceOne = _evidenceOne;
             this.evidenceTwo = _evidenceTwo;
@@ -14,12 +15,14 @@ var Phasmophobia;
             this.stillPossible = true;
         }
         createBoxes(_nameParent, _infoParent) {
+            //Creating the paragraph-element for the name which is shown on the left
             let nameTag = document.createElement("p");
             nameTag.innerHTML = this.name;
             nameTag.classList.add("ghostName");
             nameTag.id = this.name;
             nameTag.addEventListener("click", Phasmophobia.toggleInfo);
             _nameParent.appendChild(nameTag);
+            //Creating the container with the detailed information for the ghost which is shown on the right
             let ghostInfo = document.createElement("div");
             ghostInfo.classList.add("ghostInfo");
             ghostInfo.classList.add("dontShow");
@@ -29,6 +32,7 @@ var Phasmophobia;
             _infoParent.appendChild(ghostInfo);
         }
         checkEvidence(_evidence) {
+            //checking if the given evidence is a evidenve for the ghost and return true if yes and false if no
             if (_evidence == this.allEvidence[0] || _evidence == this.allEvidence[1] || _evidence == this.allEvidence[2]) {
                 return true;
             }

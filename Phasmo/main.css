@@ -26,10 +26,17 @@ h1 {
     display: block;
 }
 
+.ghostInfo:first-child {
+    margin-top: 0;
+}
+
 #ghostInfos h2 {
     font-size: 45px;
     margin: 0;
-    line-height: 460px;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 #allGhosts {
@@ -97,6 +104,7 @@ h1 {
 #evidences {
     margin-top: 70px;
     display: flex;
+    padding-bottom: 50px;
 }
 
 #exclude, #include {
@@ -133,6 +141,49 @@ input[type="checkbox"]+label::before {
 }
 
 input[type="checkbox"]:checked+label::before {
-    box-shadow: inset 0px 0px 0px 3px #fff;
-    background-color: #535759;
+    /* box-shadow: inset 0px 0px 0px 3px #fff; */
+    /* background-color: #535759; */
+    background-image: url(IMG/cross_icon.png);
+    background-size: 20px 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@media(max-width: 1085px) {
+    #ghostInfos {
+        position: initial;
+        border-radius: 5px;
+        width: unset;
+        margin-top: 50px;
+    }
+    #bgImage {
+        display: none;
+    }
+    #ghostNames {
+        border-radius: 5px;
+        position: initial;
+    }
+}
+
+@media(max-width: 850px) {
+    #evidences {
+        flex-direction: column;
+        margin-top: 0;
+        padding-left: 50px;
+        padding-right: 20px;
+    }
+    #include {
+        padding-top: 20px;
+        width: 100%;
+    }
+    #exclude {
+        width: 100%;
+    }
+}
+
+@media (max-width: 700px) {
+    #ghostInfos {
+        height: fit-content;
+        min-height: 500px;
+    }
 }

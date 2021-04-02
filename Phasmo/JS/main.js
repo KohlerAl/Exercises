@@ -1,19 +1,23 @@
 "use strict";
 var Phasmophobia;
 (function (Phasmophobia) {
-    window.addEventListener("load", handleLoad);
+    //Declaring an array with all ghosts
     Phasmophobia.allGhosts = [];
+    //Global Variables
     let placeholder;
     let lastTarget;
     let exclude;
     let include;
+    window.addEventListener("load", handleLoad);
     async function handleLoad() {
+        //Fetching the json-file and create the ghosts with the data in it
         let answer = await fetch("JSON/ghosts.json");
         let response = await answer.text();
         let ghosty = JSON.parse(response);
         placeholder = document.querySelector("#placeholder");
         exclude = document.querySelector("#exclude");
         include = document.querySelector("#include");
+        //installing a change-listener on the checkboxes
         include.addEventListener("change", changeStatus);
         exclude.addEventListener("change", changeStatus);
         Phasmophobia.generateContent(ghosty);
